@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue World</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+    </div>
+
+<script>
+// plain old ES5 and barebones Hello World using Vue
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue World!'
+    }
+});
+</script>
+</body>
+</html>
