@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Do</title>
+    <meta charset="utf-8">
+
+    <script src="js/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <input @keydown="handleKeyDown">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<script>
+const handleKeyDown = function(ev) {
+    if (ev.key === 'Enter') {
+        app.todos.push({ text: ev.target.value });
+        ev.target.value = '';
+    }
+};
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    todos: [
+      { text: 'Shake' },
+      { text: 'Bake' },
+    ]
+  },
+  methods: {
+    handleKeyDown: handleKeyDown  // TODO ES6 shorthand
+  }
+});
+</script>
+</body>
+</html>
+
+
+
+
+
