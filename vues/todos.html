@@ -3,16 +3,18 @@
 <head>
     <title>Vue Do</title>
     <meta charset="utf-8">
-
     <script src="js/vue.js"></script>
-
 </head>
 <body>
 <div id="app">
     <input @keydown="handleKeyDown">
     <ol>
         <li v-for="todo in todos">
-            {{ todo.text }}
+            <label v-bind:class="{ complete: todo.complete }">
+                <input type=checkbox v-model="todo.complete">
+                {{ todo.text }}
+            </label>
+            <!--<button @click="deleteTodo">Delete</button>-->
         </li>
     </ol>
 </div>
@@ -20,24 +22,40 @@
 <script>
 const handleKeyDown = function(ev) {
     if (ev.key === 'Enter') {
-        app.todos.push({ text: ev.target.value });
+        app.todos.push({ text: ev.target.value, complete: false });
         ev.target.value = '';
     }
+};
+
+const deleteTodo = function(ev) {
+    // TODO use key in order to identify items and pop them from the todos data
+    alert('Not Implemented');
 };
 
 const app = new Vue({
   el: '#app',
   data: {
     todos: [
-      { text: 'Shake' },
-      { text: 'Bake' },
+      { text: 'Shake', complete: true },
+      { text: 'Bake', complete: false },
     ]
   },
   methods: {
-    handleKeyDown: handleKeyDown  // TODO ES6 shorthand
+    handleKeyDown: handleKeyDown,  // TODO ES6 shorthand
+    deleteTodo: deleteTodo,
   }
 });
 </script>
+
+<style type="text/css">
+body {
+    font-size: 1.2em;
+}
+.complete {
+    text-decoration: line-through;
+}
+</style>
+
 </body>
 </html>
 
