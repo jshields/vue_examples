@@ -29,7 +29,7 @@ const deleteTodo = function(todo) {
     // Possible FIXME: use key in order to identify items?
     // or bind delete method to individial todo component?
     // insert time on todos is currently good, can delete be improved?
-    app.todos = app.todos.filter(item => item != todo);
+    app.todos = app.todos.filter(item => item !== todo);
 };
 
 const app = new Vue({
